@@ -1,8 +1,12 @@
 import pandas as pd
 import streamlit as st
+import numpy as np
 
 # Load Sample Data
 df = pd.read_csv('university_student_dashboard_data.csv')
+df['Nueva_Columna'] = np.where(df['Term'] == 'Spring', 'I', 'II')
+df['Year_Semestre'] = df['Year'].astype(str) +'-' +df['Nueva_Columna']
+
 # Title
 st.title("Interactive Dashboard Academy Institution")
 
