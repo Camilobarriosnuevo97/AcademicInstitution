@@ -31,7 +31,7 @@ for kpi_name, kpi_value in kpis.items():
     st.metric(label=kpi_name, value=kpi_value)
 ### Tendencias de la tasa de retención a lo largo del tiempo
 
-import matplotlib.pyplot as plt
+import matplotlib as plt
 st.title("Tendencia Tasa de Rentención ")
 # Agrupa los datos por 'Year_Semestre' y calcula la media de 'Retention Rate (%)' para cada grupo
 retention_by_semester = df.groupby('Year_Semestre')['Retention Rate (%)'].mean()
