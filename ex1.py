@@ -35,21 +35,3 @@ st.header("KPIs del último semestre")
 for kpi_name, kpi_value in kpis.items():
     st.metric(label=kpi_name, value=kpi_value)
 
-### Tendencias de la tasa de retención a lo largo del tiempo
-import matplotlib as plt
-st.title("Tendencia Tasa de Rentención ")
-# Agrupa los datos por 'Year_Semestre' y calcula la media de 'Retention Rate (%)' para cada grupo
-retention_by_semester = df.groupby('Year_Semestre')['Retention Rate (%)'].mean()
-
-# Crea el histograma
-plt.bar(retention_by_semester.index, retention_by_semester.values)
-
-# Configura las etiquetas de los ejes
-plt.xlabel('Year_Semester')
-plt.ylabel('Retention Rate (%)')
-
-# Rota las etiquetas del eje x para una mejor visualización
-plt.xticks(rotation=45, ha='right')
-
-# Muestra el gráfico
-plt.show()
