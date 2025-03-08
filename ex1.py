@@ -2,8 +2,6 @@ import pandas as pd
 import streamlit as st
 
 # Load Sample Data
-df = px.data.gapminder()
-
 df = pd.read_csv('university_student_dashboard_data.csv')
 # Title
 st.title("Interactive Dashboard Academy Institution")
