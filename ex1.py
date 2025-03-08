@@ -8,7 +8,7 @@ df['Nueva_Columna'] = np.where(df['Term'] == 'Spring', 'I', 'II')
 df['Year_Semestre'] = df['Year'].astype(str) +'-' +df['Nueva_Columna']
 
 # Create a sidebar filter for selecting a year
-selected_yearsemester = st.sidebar.slider("Select Year:", int(df["Year_Semestre"].min()), int(df["Year_Semestre"].max()), int(df["Year_Semestre"].min()))
+selected_year = st.sidebar.slider("Select Year:", int(df["Year"].min()), int(df["Year"].max()), int(df["Year"].min()))
 fig3 = px.line(filtered_df, x="Year_Semestre", y="Retention Rate (%)", color="Term", title="Tendencias de la tasa de retención a lo largo del tiempo")
 
 
