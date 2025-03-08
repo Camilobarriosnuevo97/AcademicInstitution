@@ -8,7 +8,7 @@ df['Nueva_Columna'] = np.where(df['Term'] == 'Spring', 'I', 'II')
 df['Year_Semestre'] = df['Year'].astype(str) +'-' +df['Nueva_Columna']
 
 # Title
-st.title("Interactive Dashboard Academy Institution")
+st.title(" 📊Interactive Dashboard Academy Institution")
 
 # Agrupa los datos por semestre y calcula los totales
 semester_totals = df.groupby('Year_Semestre')[['Applications', 'Admitted', 'Enrolled']].sum()
