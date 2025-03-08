@@ -2,10 +2,15 @@ import pandas as pd
 import streamlit as st
 import numpy as np
 
-# Load Sample Data
+# Se carga el dataset
 df = pd.read_csv('university_student_dashboard_data.csv')
 df['Nueva_Columna'] = np.where(df['Term'] == 'Spring', 'I', 'II')
 df['Year_Semestre'] = df['Year'].astype(str) +'-' +df['Nueva_Columna']
+
+# Create a sidebar filter for selecting a year
+selected_yearsemester = st.sidebar.slider("Select Year:", int(df["Year_Semestre"].min()), int(df["Year_Semestre"].max()), int(df["Year_Semestre"].min()))
+fig3 = px.line(filtered_df, x="Year_Semestre", y="Retention Rate (%)", color="Term", title="Tendencias de la tasa de retención a lo largo del tiempo")
+
 
 # Title
 st.title(" 📊Interactive Dashboard Academy Institution")
@@ -29,8 +34,8 @@ st.header("KPIs del último semestre")
 # Itera sobre el diccionario de KPIs y muestra cada uno
 for kpi_name, kpi_value in kpis.items():
     st.metric(label=kpi_name, value=kpi_value)
-### Tendencias de la tasa de retención a lo largo del tiempo
 
+### Tendencias de la tasa de retención a lo largo del tiempo
 import matplotlib as plt
 st.title("Tendencia Tasa de Rentención ")
 # Agrupa los datos por 'Year_Semestre' y calcula la media de 'Retention Rate (%)' para cada grupo
