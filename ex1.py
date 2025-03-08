@@ -7,6 +7,9 @@ df = pd.read_csv('university_student_dashboard_data.csv')
 df['Nueva_Columna'] = np.where(df['Term'] == 'Spring', 'I', 'II')
 df['Year_Semestre'] = df['Year'].astype(str) +'-' +df['Nueva_Columna']
 
+# Filter data based on the selected year
+filtered_df = df[df.year == selected_year]
+
 # Create a sidebar filter for selecting a year
 selected_year = st.sidebar.slider("Select Year:", int(df["Year"].min()), int(df["Year"].max()), int(df["Year"].min()))
 fig3 = px.line(filtered_df, x="Year", y="Retention Rate (%)", color="Term", title="Tendencias de la tasa de retención a lo largo del tiempo")
